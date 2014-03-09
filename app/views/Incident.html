@@ -1,0 +1,102 @@
+﻿<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-xs-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">Event Info</div>
+        <div class="panel-body">
+          <div><input class="form-control" type="text" data-ng-model="currentIncident.Name" value="{{ currentIncident.Name }}" placeholder="Incident Name" /></div>
+          <div><input class="form-control" type="text" value="02/04/2014" placeholder="mm/dd/yyyy" /></div>
+          <div>
+            <select class="form-control">
+              <option value="Fire/Alarm/Companies" selected="selected">Fire/Alarm/Companies</option>
+              <option value="Flood">Flood</option>
+              <option value="Hazmat">Hazmat</option>
+              <option value="Special Event">Special Event</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <textarea class="form-control" rows="18" data-ng-model="currentIncident.Remarks" placeholder="Remarks"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-8">
+      <div class="panel panel-info">
+        <div class="panel-heading">Location</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div><input class="form-control" type="text" data-ng-model="currentIncident.Location.AddressLine1" value="{{ currentIncident.Location.AddressLine2 }}" placeholder="Address Line 1"  /></div>
+            <div><input class="form-control" type="text" data-ng-model="currentIncident.Location.AddressLine2" value="{{ currentIncident.Location.AddressLine2 }}" placeholder="Address Line 2" /></div>
+            <div><input class="form-control" type="text" data-ng-model="currentIncident.Location.City" value="{{ currentIncident.Location.City }}" placeholder="City" /></div>
+            <div><input class="form-control" type="text" data-ng-model="currentIncident.Location.State" value="{{ currentIncident.Location.State }}" placeholder="State" /></div>
+            <div><input class="form-control" type="text" data-ng-model="currentIncident.Location.Zip" value="{{ currentIncident.Location.Zip }}" placeholder="Zip" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">Map</div>
+        <div class="panel-body">
+          <!--<div id="map-canvas">{{ currentIncident.Location.AddressLine1 }} {{ currentIncident.Location.AddressLine2 }} {{ currentIncident.Location.City }} {{ currentIncident.Location.State }}
+          {{ currentIncident.Location.Zip }}
+          </div>-->
+
+        <img src="img/map.png" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+<script>
+
+  var geocoder, map;
+
+  function codeAddress(address) {
+    var lat;
+    var lon;
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      'address': address
+    }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        lat = results[0].geometry.location.d;
+        lon = results[0].geometry.location.e;
+        result = results[0].geometry.location;
+        var mapOptions = {
+          zoom: 15,
+          center: new google.maps.LatLng(lat, lon)
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+                                  mapOptions);
+
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(lat, lon)
+        });
+
+      }
+
+
+    });
+
+  }
+  function initialize() {
+    addressValue = document.getElementById('map-canvas').innerHTML;
+    codeAddress(addressValue);
+
+
+  }
+
+  var addressValue;
+
+  //google.maps.event.addDomListener(window, 'load', initialize);
+</script>-->

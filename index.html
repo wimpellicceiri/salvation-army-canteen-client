@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Salvation Army Emergency Services Application</title>
+  <!--<link href='http://fonts.googleapis.com/css?family=Istok+Web:400,700,400italic,700italic' rel='stylesheet' type='text/css'>-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link type="text/css" href="css/style.css" id="css-uiestate" rel="stylesheet" />
+</head>
+<body>
+
+  <div id="wrap">
+    <header>
+      <div class="container-fluid">
+        <div class="top-bar row">
+          <div class="col-xs-9">
+            <div class="event-id">
+              CodeFest 2014 - Team #5
+            </div>
+
+          </div>
+          <div class="logout col-xs-3">
+            <div>
+              <a href="#/" style="color:white;">Logout <i class="glyphicon glyphicon-log-out"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav id="section-nav" class="hide navbar">
+        <ul class="nav nav-justified navbar-static-top">
+          <li class="active"><a href="#/incident"><i class="glyphicon glyphicon-home"></i><br />Incident</a></li>
+          <li><a href="#/time"><i class="glyphicon glyphicon-time"></i><br />Time Log</a></li>
+          <li><a href="#/people"><i class="glyphicon glyphicon-user"></i><br />People</a></li>
+          <li><a href="#/inventory"><i class="glyphicon glyphicon-cutlery"></i><br />Inventory</a></li>
+          <li><a href="#/truck"><i class="glyphicon glyphicon-road"></i><br />Truck Info</a></li>
+        </ul>
+      </nav>
+    </header>
+      <div class="event-screen" data-ng-view="">
+
+      </div>
+      <div class="push"></div>
+    </div>
+  <footer>
+    <div id="footerContainer" class="container hide" style="width:100%;">
+      <button class="btn btn-default col-xs-12" data-ng-click="finishIncident()" data-toggle="modal" data-target="#myModal" onclick="updateCurrentIncidentStatus(currentIncident); x = setInterval(function () { $('#myModal').modal('hide'); $('#footerContainer').addClass('hide'); window.location = '#'; clearInterval(x); }, 500);">FINISH INCIDENT</button>
+    </div>
+  </footer>
+
+  <!-- Modal Boxes -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color:black;">
+        <div class="modal-body">
+          Submitting...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="/Scripts/bootstrap.min.js"></script>
+  <script src="/Scripts/angular.js"></script>
+  <script src="/Scripts/angular-route.js"></script>
+  <script src="/Scripts/require.js" data-main="/Scripts/main"></script>
+  <script>
+    window.onload = function () {
+      var buttons = $('.nav a').on('click', function () {
+        $(this).parent().siblings().removeClass('active');
+        $(this).parent().addClass('active');
+      });
+    };
+
+    function updateCurrentIncidentStatus(incident) {
+      if (typeof (incident) == 'undefined') {
+        incident = new Object();
+        incident.Status = 'Complete';
+        $.ajax({
+          url: 'http://salvationarmywebapi.azurewebsites.net/api/incident/',
+          data: incident,
+          type: 'POST'
+        });
+      }
+      else if (typeof (incident.Id) == 'undefined') {
+        incident.Status = 'Complete';
+        $.ajax({
+          url: 'http://salvationarmywebapi.azurewebsites.net/api/incident',
+          data: incident,
+          type: 'POST'
+        });
+      }
+      else {
+        incident.Status = 'Complete';
+        var id = incident.Id - 1;
+        $.ajax({
+          url: 'http://salvationarmywebapi.azurewebsites.net/api/incident/' + id,
+          data: incident,
+          type: 'PUT'
+        });
+      }
+    }
+  </script>
+</body>
+</html>

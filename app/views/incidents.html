@@ -1,0 +1,8 @@
+﻿<ul>
+  <li data-ng-repeat="incident in incidents">{{ incident.StartMileage }}</li>
+</ul>
+
+<!--<div data-ng-repeat="incident in incidents">-->
+  <input type="text" data-ng-model="newIncident.StartMileage" />
+  <button type="submit" data-ng-click="addIncident()">Add Incident</button>
+<!--</div>-->

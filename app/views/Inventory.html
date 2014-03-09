@@ -1,0 +1,43 @@
+﻿<div class="inventory-section" >
+  <div class="container-fluid">
+    <div>
+      <table class="table table-responsive" data-ng-show="currentIncident.ItemsServed">
+        <thead>
+          <tr>
+            <!--<th></th>-->
+            <th>Item Name</th>
+            <th>Units</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="itemServed in currentIncident.ItemsServed">
+            <!--<td>
+            <img class="thumbnail" src="img/person1.jpg" alt="Photo" width="100" />
+          </td>-->
+            <td>
+              {{ itemServed.Name }}
+            </td>
+            <td>
+              {{ itemServed.Units }}
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-default" data-ng-click="decrementQuantity()"><i class="glyphicon glyphicon-arrow-down"></i></button>
+                <div class="btn btn-default">{{ itemServed.Quantity || 0 }}</div>
+                <button class="btn-group btn btn-default" data-ng-click="incrementQuantity()"><i class="glyphicon glyphicon-arrow-up"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <select data-ng-model="test" data-ng-options="menuItem.Id as menuItem.Name for menuItem in menuItems">
+
+      </select>
+      <button data-ng-click="addMenuItem()"><i class="glyphicon glyphicon-plus" /></button>
+    </div>
+  </div>
+</div>

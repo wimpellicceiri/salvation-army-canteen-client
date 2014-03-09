@@ -1,0 +1,40 @@
+﻿<div class="time-section">
+  <div class="container-fluid">
+    <div class="center-block">
+      <table class="table table-responsive" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="font-size:20px;"><i class="glyphicon glyphicon-warning-sign" /> Time of Incident</td>
+            <td>
+              <input class="pull-right black" type="time" placeholder="HH:MM AM/PM" value="{{ currentIncident.StartDate }}" data-ng-model="currentIncident.StartDate" />
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size:20px;"><i class="glyphicon glyphicon-arrow-right" /> Time in Route</td>
+            <td>
+              <input class="pull-right black" type="time" placeholder="HH:MM AM/PM" value="{{ currentIncident.StartRoute }}" data-ng-model="currentIncident.StartRoute" />
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size:20px;"><i class="glyphicon glyphicon-fire" /> Time on Scene</td>
+            <td>
+              <input class="pull-right black" type="time" placeholder="HH:MM AM/PM" value="{{ currentIncident.TimeOnScene }}" data-ng-model="currentIncident.TimeOnScene" />
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size:20px;"><i class="glyphicon glyphicon-arrow-left" /> Time of Departure</td>
+            <td>
+              <input class="pull-right black" type="time" placeholder="HH:MM AM/PM" value="{{ currentIncident.EndDate }}" data-ng-model="currentIncident.EndDate" />
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size:20px;"><i class="glyphicon glyphicon-home" /> Time of Return</td>
+            <td>
+              <input class="pull-right black" type="time" placeholder="HH:MM AM/PM" value="{{ currentIncident.TimeReturned }}" data-ng-model="currentIncident.TimeReturned" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

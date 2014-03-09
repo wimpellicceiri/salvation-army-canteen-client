@@ -1,0 +1,39 @@
+﻿<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Truck</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="incident in incidents">
+      <td>
+        {{ incident.Name }}
+      </td>
+      <td>
+        <div>
+          {{ incident.Location.AddressLine1 }}
+        </div>
+        <div ng-show="incident.Location.AddressLine2">
+          {{ incident.Location.AddressLine2 }}
+        </div>
+        {{ incident.Location.City }}, {{ incident.Location.State }} {{ incident.Location.Zip }}
+      </td>
+      <td>
+        {{ incident.Truck.Name }}
+      </td>
+      <td>
+        <span ng-show="incident.Status">{{ incident.Status }}</span>
+        <button ng-show="!incident.Status" ng-click="startIncident(incident)" class="btn btn-default">GO</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row" style="margin-top:20px;">
+  <div class="col-xs-12">
+    <button ng-click="startIncident()" class="btn btn-default center-block">START NEW INCIDENT</button>
+  </div>
+</div>
